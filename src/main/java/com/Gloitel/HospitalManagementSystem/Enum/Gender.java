@@ -1,6 +1,6 @@
 package com.Gloitel.HospitalManagementSystem.Enum;
 
-public enum Gander {
+public enum Gender {
     Male,
     Female,
     Other

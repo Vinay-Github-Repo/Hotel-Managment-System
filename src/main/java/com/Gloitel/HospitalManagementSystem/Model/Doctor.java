@@ -1,6 +1,6 @@
 package com.Gloitel.HospitalManagementSystem.Model;
 
-import com.Gloitel.HospitalManagementSystem.Enum.BloodGroup;
+import com.Gloitel.HospitalManagementSystem.Enum.Department;
 import com.Gloitel.HospitalManagementSystem.Enum.Gender;
 import jakarta.persistence.*;
 import lombok.*;
@@ -11,38 +11,29 @@ import java.util.List;
 
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-public class Patient {
+public class Doctor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
     @Column(unique = true)
-    String patientId;
+    String doctorId;
 
     String password;
 
     String name;
 
-    int age;
-
+    @Enumerated(EnumType.STRING)
     Gender gender;
 
     @Enumerated(EnumType.STRING)
-    BloodGroup blood_group;
+    Department department;
 
-    Boolean blood_sign;//(+,-)
-
-    String phone_no;
-
-    @OneToMany(mappedBy = "patient",cascade = CascadeType.ALL)
-    List<Appointment> appointments=new ArrayList<>();
-
-    String prescription;
-
-    
+    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
+    List<Appointment> appointments= new ArrayList<>();
 }
