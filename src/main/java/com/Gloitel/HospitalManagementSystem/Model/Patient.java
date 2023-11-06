@@ -39,6 +39,8 @@ public class Patient {
 
     String phone_no;
 
+    String address;
+
     @OneToMany(mappedBy = "patient",cascade = CascadeType.ALL)
     List<Appointment> appointments=new ArrayList<>();
 

@@ -1,5 +1,7 @@
-package com.Gloitel.HospitalManagementSystem.Dto.RequestDto;
+package com.Gloitel.HospitalManagementSystem.Dto.ResponseDto;
 
+
+import com.Gloitel.HospitalManagementSystem.Enum.Department;
 import com.Gloitel.HospitalManagementSystem.Enum.Gender;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -9,14 +11,9 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @Getter
 @Setter
-public class AddPatientRequestDto {
+public class AddDoctorResponseDto {
 
-    String patientId;
-    String password;
+    String doctorId;
     String name;
-    int age;
-    Gender gender;
-    String phone_no;
-    String address;
-
+    String message;
 }

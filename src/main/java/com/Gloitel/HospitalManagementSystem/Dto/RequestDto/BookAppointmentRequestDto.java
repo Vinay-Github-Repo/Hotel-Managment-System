@@ -1,22 +1,20 @@
 package com.Gloitel.HospitalManagementSystem.Dto.RequestDto;
 
-import com.Gloitel.HospitalManagementSystem.Enum.Gender;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+
+import java.util.Date;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class AddPatientRequestDto {
+public class BookAppointmentRequestDto {
 
+    Date appointmentDate;
     String patientId;
-    String password;
-    String name;
-    int age;
-    Gender gender;
-    String phone_no;
-    String address;
-
+    String doctorId;
 }

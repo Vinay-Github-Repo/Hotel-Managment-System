@@ -1,6 +1,10 @@
 package com.Gloitel.HospitalManagementSystem.Dto.RequestDto;
 
+
+import com.Gloitel.HospitalManagementSystem.Enum.Department;
 import com.Gloitel.HospitalManagementSystem.Enum.Gender;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -9,14 +13,12 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @Getter
 @Setter
-public class AddPatientRequestDto {
+public class AddDoctorRequestDto {
 
-    String patientId;
+
+    String doctorId;
     String password;
     String name;
-    int age;
     Gender gender;
-    String phone_no;
-    String address;
-
+    Department department;
 }

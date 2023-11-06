@@ -23,14 +23,13 @@ public class Appointment {
     @CreationTimestamp
     Date appointmentDate;
 
+    @ManyToOne
+    @JoinColumn
+    String patientId;
 
     @ManyToOne
     @JoinColumn
-    Patient patient;
-
-    @ManyToOne
-    @JoinColumn
-    Doctor doctor;
+    String doctorId;
 
     @Enumerated(EnumType.STRING)
     AppointmentStatus status;
