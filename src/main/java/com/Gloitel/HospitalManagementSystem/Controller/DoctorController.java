@@ -19,28 +19,15 @@ public class DoctorController {
     @Autowired
     DoctorService doctorService;
 
-    @Autowired
-    AppointmentRepository appointmentRepository;
-
-    @PostMapping("/update-appointment-status")
+    @PutMapping("/update-appointment-status")
     public ResponseEntity updateAppointmentStatus(@RequestParam Boolean status,
                                                   @RequestParam int appointmentId){
 
         try{
-            Appointment appointment = appointmentRepository.findById(appointmentId).get();
-            if(status){
-                appointment.setStatus(AppointmentStatus.Scheduled);
-                appointmentRepository.save(appointment);
-                return new ResponseEntity("Appointment is Scheduled",HttpStatus.ACCEPTED);
-            }else{
-                appointment.setStatus(AppointmentStatus.Canceled);
-                appointmentRepository.save(appointment);
-                return new ResponseEntity("Appointment is Rejected",HttpStatus.CREATED);
-            }
-        }catch (Exception e){
+            String response = doctorService.updateAppointmentStatus(status,appointmentId);
+            return new ResponseEntity("Appointment is Scheduled",HttpStatus.ACCEPTED);
+        }catch(Exception e){
             return  new ResponseEntity("Wrong appointment is selected", HttpStatus.BAD_REQUEST);
         }
     }
-
-
 }

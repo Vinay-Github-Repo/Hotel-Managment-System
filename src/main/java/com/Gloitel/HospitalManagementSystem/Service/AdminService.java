@@ -72,10 +72,10 @@ public class AdminService {
     public String assignDoctorForAppointment(int appointmentId, String doctorId) {
 
         Appointment appointment = appointmentRepository.findById(appointmentId).get();
-        appointment.setDoctorId(doctorId);
+        appointment.setDoctor(doctorRepository.findBydoctorId(doctorId));
         appointmentRepository.save(appointment);
         Doctor doctor = doctorRepository.findBydoctorId(doctorId);
-        Patient patient = patientRepository.findBypatientId(appointment.getPatientId());
+        Patient patient = appointment.getPatient();
 
         return "Dr. "+ doctor.getName()+ " is appoint for patient "+patient.getName();
 

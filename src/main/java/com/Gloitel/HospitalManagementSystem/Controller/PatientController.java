@@ -20,6 +20,7 @@ public class PatientController {
     @Autowired
     PatientService patientService;
 
+
     @PostMapping("/add")
     public ResponseEntity addPatient(@RequestBody AddPatientRequestDto addPatientRequestDto){
 

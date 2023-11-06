@@ -6,6 +6,7 @@ import com.Gloitel.HospitalManagementSystem.Dto.ResponseDto.AddPatientResponseDt
 import com.Gloitel.HospitalManagementSystem.Enum.AppointmentStatus;
 import com.Gloitel.HospitalManagementSystem.Model.Appointment;
 import com.Gloitel.HospitalManagementSystem.Model.Patient;
+import com.Gloitel.HospitalManagementSystem.Repository.AppointmentRepository;
 import com.Gloitel.HospitalManagementSystem.Repository.DoctorRepository;
 import com.Gloitel.HospitalManagementSystem.Repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ public class PatientService {
 
     @Autowired
     DoctorRepository doctorRepository;
+
+    @Autowired
+    AppointmentRepository appointmentRepository;
 
     public AddPatientResponseDto addPatient(AddPatientRequestDto addPatientRequestDto) {
 
@@ -55,13 +59,15 @@ public class PatientService {
         return "Patient is updated";
     }
 
+
     public String bookAppointment(BookAppointmentRequestDto appointmentRequestDto) {
 
         Appointment appointment = new Appointment();
         appointment.setAppointmentDate(appointmentRequestDto.getAppointmentDate());
-        appointment.setPatientId(appointmentRequestDto.getPatientId());
+        Patient patient = patientRepository.findBypatientId(appointmentRequestDto.getPatientId());
+        appointment.setPatient(patient);
         appointment.setStatus(AppointmentStatus.Request);
-        appointment.setDoctorId(doctorRepository.find);
-
+        appointmentRepository.save(appointment);
+        return "Your appointment has been Requested";
     }
 }

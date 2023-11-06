@@ -25,11 +25,11 @@ public class Appointment {
 
     @ManyToOne
     @JoinColumn
-    String patientId;
+    Patient patient;
 
     @ManyToOne
     @JoinColumn
-    String doctorId;
+    Doctor doctor;
 
     @Enumerated(EnumType.STRING)
     AppointmentStatus status;

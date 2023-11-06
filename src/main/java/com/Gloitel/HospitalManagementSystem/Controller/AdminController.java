@@ -62,7 +62,6 @@ public class AdminController {
 
     @GetMapping("/get-patient-by-userId")
     public ResponseEntity getPatientByUserId(String patinetId){
-//        return adminService.getPatientByUserId(patinetId);
         try{
             Patient patient = adminService.getPatientByUserId(patinetId);
             return new ResponseEntity(patient,HttpStatus.ACCEPTED);
