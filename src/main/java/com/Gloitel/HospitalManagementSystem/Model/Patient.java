@@ -30,6 +30,7 @@ public class Patient {
 
     int age;
 
+    @Enumerated(EnumType.STRING)
     Gender gender;
 
     @Enumerated(EnumType.STRING)
