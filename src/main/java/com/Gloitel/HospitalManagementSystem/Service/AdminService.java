@@ -50,8 +50,9 @@ public class AdminService {
     }
 
     public String removeDoctor(String doctorId) {
+        String name = doctorRepository.findBydoctorId(doctorId).getName();
         doctorRepository.deleteByDoctorId(doctorId);
-        return "Doctor is Removed";
+        return "Dr."+name+" is Removed";
     }
 
     public List<Patient> getAllPatient() {
@@ -74,8 +75,16 @@ public class AdminService {
         Appointment appointment = appointmentRepository.findById(appointmentId).get();
         appointment.setDoctor(doctorRepository.findBydoctorId(doctorId));
         appointmentRepository.save(appointment);
+
         Doctor doctor = doctorRepository.findBydoctorId(doctorId);
+        List<Appointment> doctorAppointments= doctor.getAppointments();
+        doctorAppointments.add(appointment);
+        doctorRepository.save(doctor);
+
         Patient patient = appointment.getPatient();
+        List<Appointment> patientAppointment = patient.getAppointments();
+        patientAppointment.add(appointment);
+        patientRepository.save(patient);
 
         return "Dr. "+ doctor.getName()+ " is appoint for patient "+patient.getName();
 

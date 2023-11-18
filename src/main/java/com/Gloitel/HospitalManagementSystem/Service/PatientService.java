@@ -68,6 +68,7 @@ public class PatientService {
         appointment.setPatient(patient);
         appointment.setStatus(AppointmentStatus.Request);
         appointmentRepository.save(appointment);
-        return "Your appointment has been Requested";
+        int appointmentId = appointment.getId();
+        return "Appointment ID:"+appointmentId+" has been Requested";
     }
 }
